@@ -21,7 +21,7 @@ class CourseRemoteDatasource {
           headers: {'x-api-key': '18be70c0-4e4d-44ff-a475-50c51ece99a0'},
         ),
       );
-
+      log(result.data.toString());
       return CourseResponseModel.fromJson(result.data);
     } catch (error, stacktrace) {
       log(error.toString(), stackTrace: stacktrace);

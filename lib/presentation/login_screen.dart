@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learning/presentation/home_page.dart';
+import 'package:get/get.dart';
+import 'package:learning/presentation/router/routes.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -54,12 +55,7 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const MyHomePage(title: 'My Learning App'),
-                              ));
+                          Get.toNamed(Routes.homeScreen);
                         },
                         child: const Text('Login With Google')),
                     ElevatedButton(

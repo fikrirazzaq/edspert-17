@@ -29,11 +29,3 @@ class BannerRepositoryImpl implements BannerRepository {
     return data;
   }
 }
-
-class BannerRepositoryImplV2 implements BannerRepository {
-  @override
-  Future<BannerResponseEntity> getBanners() {
-    // TODO: implement getBanners
-    throw UnimplementedError();
-  }
-}
