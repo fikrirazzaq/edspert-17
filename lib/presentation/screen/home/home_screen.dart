@@ -6,8 +6,8 @@ import 'package:learning/presentation/screen/home/widgets/course_builder.dart';
 import 'package:learning/presentation/screen/home/widgets/welcoming_widget.dart';
 import 'package:learning/presentation/screen/widgets/section_title.dart';
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
   final homeController = Get.find<HomeController>();
 
@@ -70,15 +70,16 @@ class MyHomePage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               GetBuilder<HomeController>(
-                  init: homeController,
-                  initState: (state) => homeController.getCourse('IPA'),
-                  builder: (cHome) {
-                    final courseList = cHome.courseList;
+                init: homeController,
+                initState: (state) => homeController.getCourse('IPA'),
+                builder: (cHome) {
+                  final courseList = cHome.courseList;
 
-                    return courseList.isEmpty
-                        ? const Center(child: CircularProgressIndicator())
-                        : CourseBuilder(courseList: courseList);
-                  }),
+                  return courseList.isEmpty
+                      ? const Center(child: CircularProgressIndicator())
+                      : CourseBuilder(courseList: courseList);
+                },
+              ),
             ],
           ),
         ),

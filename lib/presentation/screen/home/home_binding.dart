@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:learning/data/datasource/banner_remote_datasource.dart';
 import 'package:learning/data/datasource/course_remote_datasource.dart';
 import 'package:learning/data/repository/banner_repository_impl.dart';
-import 'package:learning/data/repository/course_repository.dart';
+import 'package:learning/data/repository/course_repository_impl.dart';
 import 'package:learning/domain/repository/banner_repository.dart';
 import 'package:learning/domain/repository/course_repository.dart';
 import 'package:learning/domain/usecase/get_banners_usecase.dart';

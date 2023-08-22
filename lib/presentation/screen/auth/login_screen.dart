@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning/presentation/router/routes.dart';
+import 'package:learning/presentation/screen/auth/auth_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -54,13 +56,31 @@ class LoginScreen extends StatelessWidget {
                 Column(
                   children: [
                     ElevatedButton(
-                        onPressed: () {
-                          Get.toNamed(Routes.homeScreen);
-                        },
-                        child: const Text('Login With Google')),
+                      onPressed: () async {
+                        AuthController controller = Get.find<AuthController>();
+                        User? user = await controller.signInWithGoogle();
+
+                        if (user != null) {
+                          Get.snackbar('Signed In with google!', '${user.email}');
+
+                          bool isRegistered = await controller.isUserRegistered();
+                          if (isRegistered) {
+                            Get.snackbar('Is Registered!', 'User registered');
+                            // Get.offAllNamed(Routes.homeScreen);
+                          } else {
+                            Get.snackbar('Not Registered!', 'User is not registered');
+                            // Get.toNamed(Routes.registrationFormScreen);
+                          }
+                        } else {
+                          Get.snackbar('Google SignIn Failed!', 'Failed');
+                        }
+                      },
+                      child: const Text('Login With Google'),
+                    ),
                     ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Login With Apple')),
+                      onPressed: () {},
+                      child: const Text('Login With Apple'),
+                    ),
                     const SizedBox(height: 60),
                   ],
                 )
