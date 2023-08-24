@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:learning/presentation/screen/auth/login_screen.dart';
 
 import '../../router/routes.dart';
 import 'auth_controller.dart';
@@ -24,8 +23,8 @@ class _SplashScreenState extends State<SplashScreen> {
           bool isRegistered = await controller.isUserRegistered();
           if (isRegistered) {
             Get.snackbar('Is Registered!', 'User registered');
-            Get.offAllNamed(Routes.homeScreen);
-            // Get.offAllNamed(Routes.registrationFormScreen);
+            // Get.offAllNamed(Routes.homeScreen);
+            Get.offAllNamed(Routes.registrationFormScreen);
           } else {
             Get.snackbar('Not Registered!', 'User is not registered');
             Get.offAllNamed(Routes.registrationFormScreen);

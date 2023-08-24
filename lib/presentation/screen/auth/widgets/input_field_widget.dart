@@ -4,11 +4,14 @@ class InputFieldWidget extends StatelessWidget {
   final String titleText;
   final TextEditingController controller;
   final String hintText;
+  final bool enabled;
+
   const InputFieldWidget({
     super.key,
     required this.titleText,
     required this.controller,
     required this.hintText,
+    this.enabled = true,
   });
 
   @override
@@ -20,6 +23,7 @@ class InputFieldWidget extends StatelessWidget {
         TextField(
           controller: controller,
           decoration: InputDecoration(hintText: hintText),
+          readOnly: !enabled,
         ),
       ],
     );

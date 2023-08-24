@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:learning/domain/usecase/auth_usecases/sign_in_with_google_usecase.dart';
+import 'package:learning/data/model/register_user_request_model.dart';
+import 'package:learning/presentation/router/routes.dart';
 
 import '../../../domain/entity/user_response_entity.dart';
 import '../../../domain/usecase/auth_usecases/usecases.dart';
@@ -45,5 +47,43 @@ class AuthController extends GetxController {
       return await getUserUsecase(currentSignedInEmail()!);
     }
     return null;
+  }
+
+  /// Registration Form
+  TextEditingController nameTextEditingController = TextEditingController();
+  TextEditingController schoolTextEditingController = TextEditingController();
+  String gender = '';
+  String? kelas;
+
+  void updateGender(String value) {
+    gender = value;
+    update();
+  }
+
+  void updateKelas(String value) {
+    kelas = value;
+    update();
+  }
+
+  Future<void> onRegisterButtonPressed() async {
+    String email = getCurrentSignedInEmailUsecase() ?? '';
+    String name = nameTextEditingController.text;
+    String school = schoolTextEditingController.text;
+
+    bool isRegisterSuccess = await registerUserUsecase(RegisterUserRequestModel(
+      fullName: name,
+      email: email,
+      schoolName: school,
+      schoolLevel: 'SMA',
+      schoolGrade: kelas ?? '10',
+      gender: gender,
+    ));
+
+    if (isRegisterSuccess) {
+      Get.snackbar('Register Success', 'Registered as $name using $email');
+      Get.offAllNamed(Routes.homeScreen);
+    } else {
+      Get.snackbar('Error', 'Something went wrong, please try again');
+    }
   }
 }
