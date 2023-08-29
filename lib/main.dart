@@ -5,6 +5,7 @@ import 'package:learning/presentation/router/pages.dart';
 import 'package:learning/presentation/router/routes.dart';
 
 import 'firebase_options.dart';
+import 'values/colors.dart';
 
 Future<void> main() async {
   runApp(const MyApp());
@@ -22,7 +23,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(),
+        appBarTheme: AppBarTheme(
+          backgroundColor: AppColors.bluePrimary,
+        ),
         useMaterial3: true,
       ),
       getPages: Pages.getAllPages,

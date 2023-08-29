@@ -6,6 +6,8 @@ import 'package:learning/presentation/screen/home/widgets/course_builder.dart';
 import 'package:learning/presentation/screen/home/widgets/welcoming_widget.dart';
 import 'package:learning/presentation/screen/widgets/section_title.dart';
 
+import '../../router/routes.dart';
+
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
@@ -65,7 +67,12 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const SectionTitle(title: 'Pilih Pelajaran'),
-                  TextButton(onPressed: () {}, child: const Text('Lihat Semua'))
+                  TextButton(
+                    onPressed: () {
+                      Get.toNamed(Routes.courseListScreen);
+                    },
+                    child: const Text('Lihat Semua'),
+                  )
                 ],
               ),
               const SizedBox(height: 8),

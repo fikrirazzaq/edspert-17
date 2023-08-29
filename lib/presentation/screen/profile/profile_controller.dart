@@ -13,12 +13,6 @@ class HomeController extends GetxController {
     required this.courseUsecase,
   });
 
-  int selectedNavIndex = 0;
-  void navigateTo(int index) {
-    selectedNavIndex = index;
-    update();
-  }
-
   RxList<BannerDataEntity> banner = <BannerDataEntity>[].obs;
   Rx<List<BannerDataEntity>> banner2 = Rx([]);
 

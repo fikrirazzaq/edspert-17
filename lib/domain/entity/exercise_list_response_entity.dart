@@ -1,9 +1,9 @@
-class ExerciseResponseEntity {
+class ExerciseListResponseEntity {
   final int status;
   final String message;
   final List<ExerciseDataEntity> data;
 
-  ExerciseResponseEntity({
+  ExerciseListResponseEntity({
     required this.status,
     required this.message,
     required this.data,

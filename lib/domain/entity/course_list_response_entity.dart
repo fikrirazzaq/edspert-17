@@ -1,9 +1,9 @@
-class CourseResponseEntity {
+class CourseListResponseEntity {
   int status;
   String message;
   List<CourseDataEntity> data;
 
-  CourseResponseEntity({
+  CourseListResponseEntity({
     required this.status,
     required this.message,
     required this.data,

@@ -1,30 +1,26 @@
-class CourseResponseModel {
+class CourseListResponseModel {
   int? status;
   String? message;
   List<CourseDataModel>? data;
 
-  CourseResponseModel({
+  CourseListResponseModel({
     this.status,
     this.message,
     this.data,
   });
 
-  factory CourseResponseModel.fromJson(Map<String, dynamic> json) =>
-      CourseResponseModel(
+  factory CourseListResponseModel.fromJson(Map<String, dynamic> json) => CourseListResponseModel(
         status: json["status"],
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<CourseDataModel>.from(
-                json["data"]!.map((x) => CourseDataModel.fromJson(x))),
+            : List<CourseDataModel>.from(json["data"]!.map((x) => CourseDataModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "data": data == null
-            ? []
-            : List<dynamic>.from(data!.map((x) => x.toJson())),
+        "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
       };
 }
 
@@ -49,8 +45,7 @@ class CourseDataModel {
     this.progress,
   });
 
-  factory CourseDataModel.fromJson(Map<String, dynamic> json) =>
-      CourseDataModel(
+  factory CourseDataModel.fromJson(Map<String, dynamic> json) => CourseDataModel(
         courseId: json["course_id"],
         majorName: json["major_name"],
         courseCategory: json["course_category"],

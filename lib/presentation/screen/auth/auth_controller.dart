@@ -26,6 +26,29 @@ class AuthController extends GetxController {
 
   UserResponseEntity? currentUser;
 
+  void onSplashScreenStart() {
+    Future.delayed(const Duration(seconds: 2)).then(
+      (value) async {
+        AuthController controller = Get.find<AuthController>();
+        if (controller.isSignedInWithGoogle()) {
+          Get.snackbar('Signed In with google!', '..');
+
+          bool isRegistered = await controller.isUserRegistered();
+          if (isRegistered) {
+            Get.snackbar('Is Registered!', 'User registered');
+            Get.offAllNamed(Routes.homeScreen);
+          } else {
+            Get.snackbar('Not Registered!', 'User is not registered');
+            Get.offAllNamed(Routes.registrationFormScreen);
+          }
+        } else {
+          Get.snackbar('Not Signed In With Google!', 'Not Signed');
+          Get.offAllNamed(Routes.loginScreen);
+        }
+      },
+    );
+  }
+
   Future<User?> signInWithGoogle() async {
     return await signInWithGoogleUsecase();
   }

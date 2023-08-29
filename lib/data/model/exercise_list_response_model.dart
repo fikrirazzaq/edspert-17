@@ -1,11 +1,11 @@
-class ExerciseResponseModel {
+class ExerciseListResponseModel {
   int? status;
   String? message;
   List<ExerciseDataModel>? data;
 
-  ExerciseResponseModel({this.status, this.message, this.data});
+  ExerciseListResponseModel({this.status, this.message, this.data});
 
-  ExerciseResponseModel.fromJson(Map<String, dynamic> json) {
+  ExerciseListResponseModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     if (json['data'] != null) {
@@ -38,12 +38,12 @@ class ExerciseDataModel {
 
   ExerciseDataModel(
       {this.exerciseId,
-        this.exerciseTitle,
-        this.accessType,
-        this.icon,
-        this.exerciseUserStatus,
-        this.jumlahSoal,
-        this.jumlahDone});
+      this.exerciseTitle,
+      this.accessType,
+      this.icon,
+      this.exerciseUserStatus,
+      this.jumlahSoal,
+      this.jumlahDone});
 
   ExerciseDataModel.fromJson(Map<String, dynamic> json) {
     exerciseId = json['exercise_id'];

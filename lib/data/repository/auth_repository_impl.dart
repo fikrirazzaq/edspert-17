@@ -4,7 +4,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:learning/data/datasource/auth_remote_datasource.dart';
 
 import 'package:learning/data/model/register_user_request_model.dart';
-import 'package:learning/data/model/user_response_model.dart';
 
 import 'package:learning/domain/entity/user_response_entity.dart';
 

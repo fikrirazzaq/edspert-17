@@ -1,4 +1,4 @@
-import 'package:learning/domain/entity/course_response_entity.dart';
+import 'package:learning/domain/entity/course_list_response_entity.dart';
 import 'package:learning/domain/repository/course_repository.dart';
 
 class GetCourseUsecase {
@@ -6,6 +6,5 @@ class GetCourseUsecase {
 
   const GetCourseUsecase({required this.repository});
 
-  Future<CourseResponseEntity> call(String majorName) async =>
-      await repository.getCourses(majorName);
+  Future<CourseListResponseEntity> call(String majorName) async => await repository.getCourses(majorName);
 }
